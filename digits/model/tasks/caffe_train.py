@@ -506,6 +506,10 @@ class CaffeTrainTask(TrainTask):
         # Write solver file
 
         solver = caffe_pb2.SolverParameter()
+        
+        # support for coremltools
+        solver.store_blobs_in_old_format = True
+        
         # get enum value for solver type
         solver.solver_type = getattr(solver, self.solver_type)
         solver.net = self.train_val_file
